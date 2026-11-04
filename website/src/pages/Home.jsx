@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from 'react'
 import SocialLinks from '../components/SocialLinks'
+import News from '../components/News'
 
 function Home() {
   const [showIntro, setShowIntro] = useState(true)
@@ -148,6 +149,8 @@ function Home() {
                <SocialLinks />
             </div>
           </section>
+
+          <News />
         </main>
       )}
     </>
