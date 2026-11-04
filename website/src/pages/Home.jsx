@@ -142,8 +142,9 @@ function Home() {
 
             <div className="hero-photo">
                <img
-                  src="/images/profile.jpeg"
+                  src={`${import.meta.env.BASE_URL}images/profile.jpeg`}
                   alt="Rahul Kumar Kundu"
+                  className="profile-image"
                />
 
                <SocialLinks />

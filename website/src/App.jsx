@@ -18,7 +18,7 @@ import './App.css'
 function App() {
   return (
     <HelmetProvider>
-      <BrowserRouter>
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
         <Navbar />
 
         <Routes>
