@@ -1,6 +1,6 @@
 
 import { chromium } from 'playwright'
-import { spawn } from 'node:child_process'
+import { preview } from 'vite'
 import { mkdir, writeFile, copyFile } from 'node:fs/promises'
 import path from 'node:path'
 
@@ -17,45 +17,18 @@ const baseUrl = 'http://127.0.0.1:4173'
 const siteUrl = 'https://rahul-kumar-kundu.github.io'
 const dist = path.resolve('dist')
 
-const server = spawn(
-  'npm',
-  [
-    'run', 'preview', '--',
-    '--host', '127.0.0.1',
-    '--port', '4173',
-    '--strictPort',
-  ],
-  {
-    stdio: 'pipe',
-    shell: process.platform === 'win32',
-  }
-)
-
+let server
 let browser
 
 try {
-  let ready = false
-
-  for (let i = 0; i < 60; i++) {
-    if (server.exitCode !== null) {
-      throw new Error('Preview server stopped unexpectedly')
-    }
-
-    try {
-      const response = await fetch(baseUrl)
-
-      if (response.ok) {
-        ready = true
-        break
-      }
-    } catch {}
-
-    await new Promise(resolve => setTimeout(resolve, 500))
-  }
-
-  if (!ready) {
-    throw new Error('Preview server failed to start')
-  }
+  // Start Vite preview directly without spawning npm.
+  server = await preview({
+    preview: {
+      host: '127.0.0.1',
+      port: 4173,
+      strictPort: true,
+    },
+  })
 
   browser = await chromium.launch({ headless: true })
 
@@ -109,14 +82,15 @@ try {
           }
         }
 
-        // Set the correct page title.
-        head.querySelectorAll('title').forEach(el => el.remove())
+        // Ensure exactly one correct page title.
+        head.querySelectorAll('title')
+          .forEach(el => el.remove())
 
         const titleElement = document.createElement('title')
         titleElement.textContent = expectedTitle
         head.appendChild(titleElement)
 
-        // Set the correct canonical URL.
+        // Ensure exactly one correct canonical URL.
         head.querySelectorAll('link[rel="canonical"]')
           .forEach(el => el.remove())
 
@@ -125,7 +99,7 @@ try {
         canonical.href = canonicalUrl
         head.appendChild(canonical)
 
-        // Ensure Open Graph title and URL are consistent.
+        // Ensure social metadata is consistent.
         const setMeta = (attribute, name, content) => {
           const elements = [
             ...head.querySelectorAll(
@@ -174,12 +148,10 @@ try {
     await mkdir(path.dirname(output), { recursive: true })
     await writeFile(output, html, 'utf8')
 
-    console.log(
-      `Prerendered: ${route} | ${metadata.title}`
-    )
+    console.log(`Prerendered: ${route} | ${metadata.title}`)
   }
 
-  // GitHub Pages SPA fallback.
+  // GitHub Pages fallback.
   await copyFile(
     path.join(dist, 'index.html'),
     path.join(dist, '404.html')
@@ -187,9 +159,14 @@ try {
 
   console.log('All routes prerendered successfully')
 } finally {
-  if (browser) {
-    await browser.close()
+  // Close Chromium and Vite preview server.
+  try {
+    if (browser) {
+      await browser.close()
+    }
+  } finally {
+    if (server) {
+      await server.close()
+    }
   }
-
-  server.kill()
 }
