@@ -18,12 +18,12 @@ function Home() {
     <>
       {showIntro ? (
         <div className="welcome-screen">
-           <div className="welcome-content">
-              <h1 className="welcome-text">Namaskar 🙏</h1>
-              <p className="welcome-subtitle">
-                Welcome to Rahul's Website
-              </p>
-            </div>
+          <div className="welcome-content">
+            <h1 className="welcome-text">Namaskar 🙏</h1>
+            <p className="welcome-subtitle">
+              Welcome to My Website
+            </p>
+          </div>
         </div>
       ) : (
         <main className="container home-reveal" id="home">
@@ -31,29 +31,27 @@ function Home() {
             <div className="hero-content">
               <h1>Rahul Kumar Kundu</h1>
 
-        <div className="academic-info">
-          <p>
-            Research Assistant,{' '}
-            <a href="https://www.qu.edu.qa/" target="_blank" rel="noopener noreferrer">
-              Qatar University
-            </a>
-          </p>
-
-          <p>
-            B.Sc. in{' '}
-            <a
-              href="https://www.ece.ruet.ac.bd/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Electrical and Computer Engineering (ECE), </a> <a href="https://www.ruet.ac.bd/" target="_blank" rel="noopener noreferrer">
-              RUET 
-            </a>
-               , Bangladesh.
-          </p>
-
-        </div>
-
+              <div className="academic-info">
+                <p>
+                  B.Sc. in{' '}
+                  <a
+                    href="https://www.ece.ruet.ac.bd/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Electrical and Computer Engineering (ECE)
+                  </a>
+                  ,{' '}
+                  <a
+                    href="https://www.ruet.ac.bd/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    RUET
+                  </a>
+                  , Bangladesh.
+                </p>
+              </div>
 
               <div className="biography">
                 <p>
@@ -66,18 +64,7 @@ function Home() {
                     Technology (RUET)
                   </strong>
                   , Bangladesh, graduating with a CGPA of 3.79/4.00
-                  and ranking 7th among 61 students. I previously
-                  worked as a{' '}
-                  <strong>Research Assistant (Remote)</strong> under{' '}
-                  <a
-                    href="https://scholar.google.com/citations?user=VC8FmyEAAAAJ&hl=en"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Dr. Amith Khandakar
-                  </a>{' '}
-                  at <strong>Qatar University</strong> from June
-                  to November 2026.
+                  and ranking 7th among 61 students.
                 </p>
 
                 <p>
@@ -137,17 +124,16 @@ function Home() {
                   at IEEE PEEIACON 2024.
                 </p>
               </div>
-
             </div>
 
             <div className="hero-photo">
-               <img
-                  src={`${import.meta.env.BASE_URL}images/profile.jpeg`}
-                  alt="Rahul Kumar Kundu"
-                  className="profile-image"
-               />
+              <img
+                src={`${import.meta.env.BASE_URL}images/profile.jpeg`}
+                alt="Rahul Kumar Kundu"
+                className="profile-image"
+              />
 
-               <SocialLinks />
+              <SocialLinks />
             </div>
           </section>
 
