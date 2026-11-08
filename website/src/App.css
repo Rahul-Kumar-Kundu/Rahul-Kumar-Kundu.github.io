@@ -2449,4 +2449,644 @@ h3.publication-group-title {
   }
 }
 
+/* =========================================
+   ACADEMIC NAVBAR — PROFILE & COLORS
+========================================= */
+
+.navbar {
+  background: #eef4f8;
+  border-bottom: 1px solid #dce5ee;
+  transition: background-color 0.25s ease;
+}
+
+.nav-container {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 12px clamp(16px, 3vw, 56px);
+  gap: 20px;
+}
+
+.nav-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  flex-shrink: 0;
+  color: var(--heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+
+.nav-profile-image {
+  display: block;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 1px 5px rgba(30, 60, 90, 0.12);
+  transition: transform 0.25s ease;
+}
+
+.nav-brand:hover .nav-profile-image { transform: scale(1.05); }
+.nav-links { gap: clamp(12px, 1.6vw, 24px); }
+.nav-links a { font-size: 0.88rem; }
+
+[data-theme='dark'] .navbar {
+  background: #192735;
+  border-bottom-color: #304253;
+}
+[data-theme='dark'] .nav-profile-image { border-color: #405468; }
+
+/* =========================================
+   RESPONSIVE CONTENT WIDTH — ALL ROUTES
+========================================= */
+
+/* Header stays full-bleed; main content uses viewport-relative gutters. */
+.container {
+  width: 100%;
+  max-width: none;
+  margin-inline: auto;
+  box-sizing: border-box;
+  padding: 44px clamp(18px, 3.2vw, 64px);
+}
+
+.footer-content {
+  width: 100%;
+  max-width: none;
+  box-sizing: border-box;
+}
+
+/* =========================================
+   HOMEPAGE HERO — NEURAL RESEARCH THEME
+========================================= */
+
+.home-hero {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.75fr);
+  align-items: center;
+  gap: clamp(24px, 4vw, 80px);
+  min-width: 0;
+  padding: clamp(26px, 3.3vw, 56px);
+  overflow: hidden;
+  border: 1px solid #dfe8ef;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #fbfdff 0%, #f5f9fc 100%);
+}
+
+/* Graphic is decorative and cannot intercept clicks. */
+
+.home-hero::before {
+  content:'';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url('/images/neural-brain.svg');
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.20;
+  pointer-events: none;
+}
+
+.home-hero-text,
+.home-hero-profile {
+  position: relative;
+  z-index: 1;
+}
+
+
+.home-hero-text { position: relative; z-index: 1; min-width: 0; }
+
+.home-hero-text h1 {
+  margin: 0 0 26px;
+  color: #1a3952;
+  font-size: clamp(2rem, 2.8vw, 3rem);
+  font-weight: 750;
+  line-height: 1.15;
+  letter-spacing: -1px;
+}
+
+.home-research-list { list-style: none; margin: 0; padding: 0; }
+.home-research-list li {
+  position: relative;
+  padding-left: 22px;
+  margin-bottom: 22px;
+}
+.home-research-list li::before {
+  content: '•';
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #2f6489;
+  font-size: 1.35rem;
+  line-height: 1;
+}
+.home-research-list strong {
+  display: block;
+  margin-bottom: 5px;
+  color: #234661;
+  font-size: 1.08rem;
+  font-weight: 700;
+}
+.home-research-list span {
+  display: block;
+  color: #5b7184;
+  font-size: 0.98rem;
+  line-height: 1.65;
+}
+
+.home-contact-icons { margin-top: 28px; }
+.home-contact-icons .social-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 26px;
+  margin: 0;
+}
+.home-contact-icons .social-links a {
+  color: #2d668d;
+  font-size: 2rem;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+.home-contact-icons .social-links a:hover {
+  color: #17496a;
+  transform: translateY(-3px);
+}
+
+.home-hero-profile {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  padding: clamp(22px, 2.8vw, 38px);
+  text-align: center;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+}
+
+.home-profile-image {
+  display: block;
+  width: clamp(155px, 15vw, 225px);
+  height: clamp(155px, 15vw, 225px);
+  max-width: 100%;
+  margin: 0 auto 20px;
+  object-fit: cover;
+  object-position: center;
+  border: 5px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 9px 26px rgba(28, 59, 85, 0.12);
+}
+.home-hero-profile h2 {
+  margin: 0 0 8px;
+  color: #1d3f59;
+  font-size: clamp(1.5rem, 2vw, 1.9rem);
+  font-weight: 750;
+}
+.home-hero-profile p {
+  margin: 0 0 10px;
+  color: #546d80;
+  font-size: 1.02rem;
+  line-height: 1.6;
+}
+.home-phd-status {
+  display: inline-block;
+  margin-top: 4px;
+  color: #275e84;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.home-reveal .news-section { margin-top: 34px; }
+
+/* =========================================
+   HOMEPAGE — DARK MODE
+========================================= */
+
+[data-theme='dark'] .home-hero {
+  background: linear-gradient(135deg, #15222e, #1b2c3a);
+  border-color: #2d3f4f;
+}
+[data-theme='dark'] .home-hero::before {
+  opacity: 0.20;
+  filter: brightness(1.7) saturate(0.9);
+}
+[data-theme='dark'] .home-hero-text h1,
+[data-theme='dark'] .home-research-list strong,
+[data-theme='dark'] .home-hero-profile h2 { color: #edf5fb; }
+[data-theme='dark'] .home-research-list span,
+[data-theme='dark'] .home-hero-profile p { color: #c7d5df; }
+[data-theme='dark'] .home-research-list li::before,
+[data-theme='dark'] .home-contact-icons .social-links a,
+[data-theme='dark'] .home-phd-status { color: #8fc7ee; }
+
+[data-theme='dark'] .home-hero-profile {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+[data-theme='dark'] .home-profile-image { border-color: #405468; }
+
+/* =========================================
+   RESPONSIVE WIDTH AND LAYOUT
+========================================= */
+
+/* Compact desktop and tablet: stack before text becomes cramped. */
+@media (max-width: 1050px) {
+  .nav-container { flex-wrap: wrap; gap: 0; }
+  .nav-actions { order: 2; margin-left: auto; }
+  .menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+  }
+  .nav-links {
+    display: none;
+    order: 3;
+    flex-direction: column;
+    align-items: stretch;
+    flex-basis: 100%;
+    width: 100%;
+    gap: 0;
+    margin-top: 12px;
+    padding: 10px 0;
+    border-top: 1px solid var(--border);
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { display: block; padding: 12px 8px; }
+  .nav-links a.active::after { display: none; }
+  .home-hero { grid-template-columns: minmax(0, 1fr) minmax(260px, 0.82fr); gap: 24px; }
+}
+
+@media (max-width: 800px) {
+  .container { padding: 32px clamp(16px, 3vw, 28px); }
+  .home-hero { grid-template-columns: minmax(0, 1fr); gap: 28px; padding: 30px 28px; }
+  .home-hero-profile { grid-row: 1; }
+  .home-hero-text { grid-row: 2; }
+  .home-profile-image { width: 190px; height: 190px; }
+
+  
+  .home-hero::before {
+    background-size: auto 100%;
+    background-position: right -115px center;
+    opacity: 0.20;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Override original mobile rules without disturbing other pages. */
+  .nav-container { padding: 12px 20px; gap: 0; }
+  .nav-brand { display: inline-flex; min-width: 0; gap: 9px; margin-right: auto; font-size: 0.92rem; }
+  .nav-brand span { overflow: hidden; text-overflow: ellipsis; }
+  .nav-profile-image { width: 35px; height: 35px; }
+  .nav-links { gap: 0; }
+}
+
+@media (max-width: 480px) {
+  .container { padding: 24px 14px; }
+  .nav-container { padding: 10px 14px; }
+  .home-hero { padding: 24px 18px; border-radius: 16px; }
+  .home-hero-text h1 { font-size: clamp(1.75rem, 7vw, 2.2rem); margin-bottom: 22px; }
+  .home-research-list li { margin-bottom: 20px; }
+  .home-research-list strong { font-size: 1.02rem; }
+  .home-research-list span { font-size: 0.92rem; }
+  .home-profile-image { width: 160px; height: 160px; }
+  .home-hero-profile { padding: 24px 18px; }
+  .home-hero-profile h2 { font-size: 1.5rem; }
+  .home-contact-icons .social-links { gap: 20px; }
+  .home-contact-icons .social-links a { font-size: 1.85rem; }
+  .nav-brand { font-size: 0.86rem; gap: 7px; }
+}
+
+@media (max-width: 360px) {
+  .home-hero::before { background-size: auto 53%; background-position: right -130px center; }
+  .nav-brand { font-size: 0.78rem; }
+  .nav-profile-image { width: 30px; height: 30px; }
+  .nav-actions { gap: 4px; }
+  .home-hero { padding: 20px 14px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-profile-image,
+  .home-contact-icons .social-links a { transition: none; }
+  .nav-brand:hover .nav-profile-image,
+  .home-contact-icons .social-links a:hover { transform: none; }
+}
+
+/* Keep decoration unobtrusive in dark mode on phones. */
+@media (max-width: 800px) {
+  [data-theme='dark'] .home-hero::before { opacity: 0.20; }
+}
+
+
+
+
+
+
+
+
+/* Clean, borderless homepage layout */
+
+.home-hero,
+[data-theme='dark'] .home-hero {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  overflow: visible;
+}
+
+/* Transparent profile area */
+
+.home-hero-profile,
+[data-theme='dark'] .home-hero-profile {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+
+
+/* Homepage layout refinement — Desktop */
+
+
+@media (min-width: 801px) {
+  .home-hero {
+    grid-template-columns: minmax(0, 1fr) 400px;
+    column-gap: 32px;
+    align-items: start;
+    padding-right: 20px;
+  }
+
+  /* Introduction takes the available width */
+  .home-hero-text {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .home-hero .home-intro {
+    width: 100%;
+    max-width: none;
+  }
+
+  .home-hero .home-intro p {
+    text-align: justify;
+    text-justify: inter-word;
+  }
+
+  /* Move profile to the top-right corner */
+  .home-hero-profile {
+    align-self: start;
+    justify-self: end;
+    justify-content: flex-start;
+    width: 400px;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+
+
+
+/* Align News & Updates with About Me */
+
+.home-reveal .news-section {
+  margin-top: 40px;
+  padding-inline: clamp(26px, 3.3vw, 56px);
+  box-sizing: border-box;
+}
+
+.home-reveal .news-section h2 {
+  margin: 0 0 20px;
+}
+
+.home-reveal .news-section .news-item {
+  padding: 14px 0;
+  margin: 0;
+}
+
+@media (max-width: 800px) {
+  .home-reveal .news-section {
+    padding-inline: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-reveal .news-section {
+    padding-inline: 18px;
+  }
+}
+
+
+
+
+/* Consistent page padding — All pages */
+
+.container {
+  width: 100%;
+  max-width: none;
+  margin-inline: auto;
+  padding: 44px clamp(18px, 3.2vw, 64px);
+  box-sizing: border-box;
+}
+
+/* Same content alignment across pages */
+
+.home-hero,
+.home-reveal .news-section {
+  padding-left: clamp(26px, 3.3vw, 56px);
+  padding-right: clamp(26px, 3.3vw, 56px);
+}
+
+/* Tablet */
+
+@media (max-width: 800px) {
+  .container {
+    padding: 32px clamp(16px, 3vw, 28px);
+  }
+
+  .home-hero,
+  .home-reveal .news-section {
+    padding-left: 28px;
+    padding-right: 28px;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 480px) {
+  .container {
+    padding: 24px 14px;
+  }
+
+  .home-hero,
+  .home-reveal .news-section {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+}
+
+
+
+/* Unified horizontal alignment across all pages */
+
+.container {
+  width: 100%;
+  max-width: none;
+  box-sizing: border-box;
+  padding: 44px clamp(44px, 6.5vw, 120px);
+}
+
+/* Remove extra horizontal padding from homepage sections */
+.home-hero,
+.home-reveal .news-section {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Tablet */
+@media (max-width: 800px) {
+  .container {
+    padding: 32px clamp(24px, 5vw, 56px);
+  }
+
+  .home-hero,
+  .home-reveal .news-section {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .container {
+    padding: 24px 20px;
+  }
+
+  .home-hero,
+  .home-reveal .news-section {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+
+
+
+
+/* Compact Academic News Timeline */
+
+.news-section .news-list {
+  height: 240px;
+  max-height: 240px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 4px 12px 4px 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+.news-section .news-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 95px minmax(0, 1fr);
+  gap: 30px;
+  align-items: start;
+  margin: 0;
+  padding: 13px 8px 17px 0;
+  border: none;
+  border-radius: 0;
+  border-left: none;
+}
+
+/* Timeline vertical line */
+.news-section .news-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 107px;
+  width: 2px;
+  background: var(--border);
+}
+
+/* Timeline dot */
+.news-section .news-item::after {
+  content: '';
+  position: absolute;
+  top: 18px;
+  left: 102px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid var(--bg);
+  box-sizing: border-box;
+}
+
+.news-section .news-date {
+  text-align: right;
+  font-size: 0.82rem;
+  font-weight: 650;
+  color: var(--accent);
+}
+
+.news-section .news-item p {
+  margin: 0;
+  font-size: 0.94rem;
+  line-height: 1.65;
+  text-align: left;
+}
+
+.news-section .news-item:hover {
+  background: transparent;
+  border-left-color: transparent;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .news-section .news-list {
+    height: 220px;
+    max-height: 220px;
+  }
+
+  .news-section .news-item {
+    grid-template-columns: 72px minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  .news-section .news-item::before {
+    left: 83px;
+  }
+
+  .news-section .news-item::after {
+    left: 78px;
+  }
+
+  .news-section .news-date {
+    font-size: 0.75rem;
+  }
+
+  .news-section .news-item p {
+    font-size: 0.87rem;
+  }
+}
+
+
+
 

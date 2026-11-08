@@ -33,7 +33,14 @@ function Navbar() {
           className="nav-brand"
           onClick={() => setMenuOpen(false)}
         >
-          Rahul Kumar Kundu
+          <img
+            src={`${import.meta.env.BASE_URL}images/profile.jpeg`}
+            alt=""
+            className="nav-profile-image"
+            width="40"
+            height="40"
+          />
+          <span>Rahul Kumar Kundu</span>
         </NavLink>
 
         <div className="nav-actions">
